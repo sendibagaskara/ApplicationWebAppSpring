@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistem Informasi Mahasiswa</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<div align="center" class="container my-2">
+    <h1> Sistem Informasi Mahasiswa </h1>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-3"> Home</a>
+    <a th:href="@{/tambahMataKuliahForm}" class="btn btn-primary btn-sm mb-3"> Add Mata Kuliah</a>
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th> Nama Mata Kuliah </th>
+            <th> Action </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="matakuliah : ${listMataKuliah}">
+            <td th:text="${matakuliah.nama_matakuliah}"></td>
+            <td align="center"><a th:href="@{/updateMataKuliahForm/{id}(id=${matakuliah.id})}" class="btn btn-primary"> Update</a>
+                <a th:href="@{/deleteMataKuliah/{id}(id=${matakuliah.id})}" class="btn btn-danger"> Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
